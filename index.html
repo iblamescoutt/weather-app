@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Weather App 🌤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="introContainer">
+  <video id="introVideo" autoplay muted playsinline class="intro-video">
+    <source src="intro.mp4" type="video/mp4">
+  </video>
+  <button id="skipBtn">Skip</button>
+</div>
+
+  <div class="app">
+   <h2>🌤 Weather App</h2>
+<div class="mode-switch">
+  <input type="checkbox" id="modeToggle">
+  <label for="modeToggle" class="switch-label">
+    <span class="switch-ball"></span>
+    <span class="icon sun">🌞</span>
+    <span class="icon moon">🌙</span>
+  </label>
+</div>
+
+    <div class="search-bar">
+      <input type="text" id="cityInput" placeholder="Search city...">
+      <button id="searchBtn">Search</button>
+    </div>
+
+<div id="loader" class="loader"></div>
+
+    <div id="weatherInfo" class="weather-card">
+      <div class="temp" id="temp">--°C</div>
+      <div class="desc" id="desc">Search a city</div>
+      <div id="location"></div>
+    </div>
+  <div class="history">
+  <h4>
+    Recent Searches
+    <button id="clearHistoryBtn">Clear</button>
+  </h4>
+  <ul id="historyList"></ul>
+</div>
+
+
+    <div class="footer-note">Enter a city and press <strong>Search</strong> or hit <em>Enter</em></div>
+  </div>
+
+  <!-- Effect Layers -->
+  <div class="rain" id="rain"></div>
+  <div class="snow" id="snow"></div>
+  <div class="clouds" id="clouds"></div>
+  <div class="fog" id="fog"></div>
+  <div class="flash" id="flash"></div>
+
+  <script src="script.js"></script>
+  <script>
+    // allow Enter key to trigger search (nice UX)
+    const input = document.getElementById('cityInput');
+    const searchBtn = document.getElementById('searchBtn');
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') searchBtn.click(); });
+    searchBtn.addEventListener('click', () => getWeather());
+  </script>
+</body>
+
+</html>
